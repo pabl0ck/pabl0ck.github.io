@@ -269,35 +269,32 @@
       margin-bottom: 30px;
     }
 
-    .name-small {
-      display: block;
-      font-family: "Antonio", "Inter", sans-serif;
-      font-size: clamp(3.4rem, 7vw, 7.6rem);
-      line-height: 0.82;
-      letter-spacing: 0.055em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #f8fafc;
-      text-shadow:
-        0 1px 0 #94a3b8,
-        0 18px 60px rgba(0, 0, 0, 0.55);
-    }
+    .name-small,
+.name-large {
+  display: block;
+  font-family: "Orbitron", "Antonio", sans-serif;
+  font-size: clamp(3.6rem, 8.2vw, 8.4rem);
+  line-height: 0.9;
+  letter-spacing: 0.018em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
 
-    .name-large {
-      display: block;
-      font-family: "Orbitron", "Antonio", sans-serif;
-      font-size: clamp(3.6rem, 8.5vw, 8.8rem);
-      line-height: 0.9;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
-      font-weight: 900;
-      background:
-        linear-gradient(180deg, #ffffff 0%, #e5e7eb 22%, #94a3b8 48%, #fbbf24 56%, #22d3ee 78%, #8b5cf6 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 20px 45px rgba(34, 211, 238, 0.12));
-    }
+.name-small {
+  color: #f8fafc;
+  text-shadow:
+    0 1px 0 #94a3b8,
+    0 18px 60px rgba(0, 0, 0, 0.55);
+}
+
+.name-large {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #e5e7eb 22%, #94a3b8 48%, #fbbf24 56%, #22d3ee 78%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 20px 45px rgba(34, 211, 238, 0.12));
+}
 
     .hero-text {
       max-width: 660px;
