@@ -183,10 +183,7 @@
       border-radius: 12px;
       display: grid;
       place-items: center;
-      color: #fff;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.78rem;
-      font-weight: 900;
+      overflow: hidden;
       background:
         linear-gradient(135deg, rgba(255,255,255,0.28), transparent 34%),
         linear-gradient(135deg, #1e293b, #8b5cf6 48%, #22d3ee);
@@ -195,6 +192,13 @@
         inset 0 1px 0 rgba(255,255,255,0.35),
         inset 0 -12px 24px rgba(0,0,0,0.32),
         0 18px 42px rgba(34, 211, 238, 0.18);
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .nav-links {
@@ -417,7 +421,7 @@
       position: relative;
       width: 184px;
       height: 184px;
-      margin-bottom: 30px;
+      margin: 0 auto 30px;
       display: grid;
       place-items: center;
     }
@@ -640,18 +644,7 @@
         linear-gradient(145deg, rgba(255,255,255,0.14), rgba(139,92,246,0.12));
       border: 1px solid rgba(139, 92, 246, 0.27);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
-    }
-
-    .card:nth-child(2) .icon {
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.14), rgba(34,211,238,0.12));
-      border-color: rgba(34, 211, 238, 0.27);
-    }
-
-    .card:nth-child(3) .icon {
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.14), rgba(251,191,36,0.10));
-      border-color: rgba(251, 191, 36, 0.25);
+      overflow: hidden;
     }
 
     .card h3 {
@@ -750,6 +743,7 @@
       font-size: 0.95rem;
       font-weight: 800;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.11);
+      overflow: hidden;
     }
 
     .work-item h3,
@@ -804,27 +798,33 @@
         linear-gradient(145deg, rgba(255,255,255,0.13), rgba(34,211,238,0.10));
       border: 1px solid rgba(34, 211, 238, 0.25);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.13);
+      overflow: hidden;
+      flex: 0 0 50px;
     }
 
-    .exp-logo.purple {
-      color: var(--purple);
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.13), rgba(139,92,246,0.11));
-      border-color: rgba(139, 92, 246, 0.25);
+    .exp-logo img,
+    .award-icon img,
+    .icon img {
+      width: 78%;
+      height: 78%;
+      object-fit: contain;
+      display: block;
     }
 
-    .exp-logo.gold {
-      color: var(--gold);
+    .exp-logo.logo-white,
+    .award-icon.logo-white,
+    .icon.logo-white {
       background:
-        linear-gradient(145deg, rgba(255,255,255,0.13), rgba(251,191,36,0.10));
-      border-color: rgba(251, 191, 36, 0.25);
+        linear-gradient(145deg, rgba(255,255,255,0.96), rgba(226,232,240,0.86));
+      border-color: rgba(255,255,255,0.38);
     }
 
-    .exp-logo.silver {
-      color: var(--silver);
+    .exp-logo.logo-dark,
+    .award-icon.logo-dark,
+    .icon.logo-dark {
       background:
-        linear-gradient(145deg, rgba(255,255,255,0.16), rgba(209,213,219,0.09));
-      border-color: rgba(209,213,219,0.28);
+        linear-gradient(145deg, rgba(15,23,42,0.92), rgba(2,6,23,0.78));
+      border-color: rgba(148,163,184,0.28);
     }
 
     .exp-header h3 {
@@ -843,6 +843,15 @@
       text-transform: uppercase;
     }
 
+    .pub-group-title {
+      margin: 34px 0 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
     .pub-tag {
       display: inline-block;
       margin-top: 11px;
@@ -856,6 +865,15 @@
       font-weight: 800;
       letter-spacing: 0.04em;
       text-transform: uppercase;
+    }
+
+    .pub-card a {
+      color: var(--cyan);
+      font-weight: 900;
+    }
+
+    .pub-card a:hover {
+      text-decoration: underline;
     }
 
     .medal {
@@ -973,7 +991,9 @@
   <nav>
     <div class="nav-inner">
       <a href="#" class="logo">
-        <span class="logo-icon">PB</span>
+        <span class="logo-icon">
+          <img src="favicon.png" alt="PB logo">
+        </span>
         <span>pabl0ck.github.io</span>
       </a>
 
@@ -1020,9 +1040,9 @@
         <div class="portrait-wrap">
           <img
             class="portrait"
-            src="pablock.jpg"
+            src="pablock.png"
             alt="Pablo Barros"
-            onerror="this.onerror=function(){this.onerror=null;this.src='pablock.jpeg'};this.src='pablock.png';"
+            onerror="this.onerror=function(){this.onerror=null;this.src='pablock.jpeg'};this.src='pablock.jpg';"
           >
         </div>
 
@@ -1111,7 +1131,9 @@
       <div class="grid">
         <article class="card">
           <div class="exp-header">
-            <div class="exp-logo">MIT</div>
+            <div class="exp-logo logo-white">
+              <img src="logo_mit.png" alt="MIT logo">
+            </div>
             <div>
               <h3>Visiting PhD Student</h3>
               <span>Operations Research Center · Feb 2026 – Jun 2026</span>
@@ -1126,7 +1148,9 @@
 
         <article class="card">
           <div class="exp-header">
-            <div class="exp-logo purple">FGV</div>
+            <div class="exp-logo logo-white">
+              <img src="logo_fgv.png" alt="FGV logo">
+            </div>
             <div>
               <h3>PhD in Applied Mathematics and Data Science</h3>
               <span>Feb 2025 – Dec 2026</span>
@@ -1141,7 +1165,9 @@
 
         <article class="card">
           <div class="exp-header">
-            <div class="exp-logo gold">BSc</div>
+            <div class="exp-logo logo-white">
+              <img src="logo_fgv.png" alt="FGV logo">
+            </div>
             <div>
               <h3>Bachelor in Applied Mathematics</h3>
               <span>GPA: 9.1/10 · Feb 2022 – Dec 2024</span>
@@ -1167,24 +1193,25 @@
       <div class="experience">
         <article class="card">
           <div class="exp-header">
-            <div class="exp-logo">MS</div>
+            <div class="exp-logo logo-white">
+              <img src="logo_microsoft.png" alt="Microsoft logo">
+            </div>
             <div>
-              <h3>Applied Science PhD Intern</h3>
+              <h3>Incoming Applied Science PhD Intern</h3>
               <span>Microsoft · Jun 2026 – Sep 2026</span>
             </div>
           </div>
           <p>
-            Translated product scenarios into ML experiments, evaluating model behavior,
-            failures, and signal quality on large-scale datasets. Built scalable AI
-            prototypes and pipelines emphasizing optimization, validation, and
-            decision-relevant model performance.
+            Incoming PhD intern working on Copilot tuning.
           </p>
           <div class="small-meta">Redmond, WA · Remote</div>
         </article>
 
         <article class="card">
           <div class="exp-header">
-            <div class="exp-logo gold">G</div>
+            <div class="exp-logo logo-dark">
+              <img src="logo_gresearch.png" alt="G-Research logo">
+            </div>
             <div>
               <h3>Spring into Quant Finance Participant</h3>
               <span>G-Research · Apr 2026</span>
@@ -1199,7 +1226,9 @@
 
         <article class="card">
           <div class="exp-header">
-            <div class="exp-logo purple">AI</div>
+            <div class="exp-logo logo-white">
+              <img src="logo_mercor.png" alt="Mercor logo">
+            </div>
             <div>
               <h3>LLM Evaluation Analyst</h3>
               <span>Mercor · Nov 2024 – Dec 2025</span>
@@ -1216,7 +1245,9 @@
 
         <article class="card">
           <div class="exp-header">
-            <div class="exp-logo silver">QS</div>
+            <div class="exp-logo logo-white">
+              <img src="logo_gscap.png" alt="Giant Steps Capital logo">
+            </div>
             <div>
               <h3>Quantitative Research Intern</h3>
               <span>Giant Steps Capital · Jan 2023 – Feb 2023</span>
@@ -1232,7 +1263,9 @@
 
         <article class="card">
           <div class="exp-header">
-            <div class="exp-logo gold">π</div>
+            <div class="exp-logo logo-white">
+              <img src="logo_gge.png" alt="GGE logo">
+            </div>
             <div>
               <h3>Mathematics Teacher</h3>
               <span>GGE School · Feb 2022 – Jul 2025</span>
@@ -1251,16 +1284,18 @@
       <div class="section-label">Publications</div>
       <h2 class="section-title">Papers and manuscripts.</h2>
       <p class="section-subtitle">
-        Selected research outputs, under-review papers, and manuscripts in preparation.
+        Selected submitted papers and manuscripts in preparation.
       </p>
 
       <div class="pub-list">
+        <div class="pub-group-title">Submitted</div>
+
         <article class="pub-card">
           <div class="pub-icon">01</div>
           <div>
-            <h3>Flexing your gradients: a root-free approach to adaptive step sizes</h3>
-            <p><strong>P. Barros</strong>, A. Defazio, V. Guigues.</p>
-            <span class="pub-tag">In preparation · NeurIPS 2026</span>
+            <h3>New operator designs for Halpern iterations with explicit rates under Hölder error bounds</h3>
+            <p><strong>P. Barros</strong>, V. Guigues, R. Behling, L.-R. Santos.</p>
+            <span class="pub-tag">Submitted · <a href="https://arxiv.org/abs/2601.14451">arXiv:2601.14451</a></span>
           </div>
           <div class="arrow">→</div>
         </article>
@@ -1268,9 +1303,9 @@
         <article class="pub-card">
           <div class="pub-icon">02</div>
           <div>
-            <h3>New operator designs for Halpern iterations with explicit rates under Hölder error bounds</h3>
-            <p><strong>P. Barros</strong>, V. Guigues, R. Behling, L.-R. Santos.</p>
-            <span class="pub-tag">Under review · Mathematics of Computation · arXiv:2601.14451</span>
+            <h3>Parallel polyhedral projection method for the convex feasibility problem</h3>
+            <p><strong>P. Barros</strong>, V. Guigues, R. Behling.</p>
+            <span class="pub-tag">Submitted · <a href="https://arxiv.org/abs/2506.15895">arXiv:2506.15895</a></span>
           </div>
           <div class="arrow">→</div>
         </article>
@@ -1278,9 +1313,9 @@
         <article class="pub-card">
           <div class="pub-icon">03</div>
           <div>
-            <h3>Parallel polyhedral projection method for the convex feasibility problem</h3>
-            <p><strong>P. Barros</strong>, V. Guigues, R. Behling.</p>
-            <span class="pub-tag">Under review · Mathematics of Operations Research · arXiv:2506.15895</span>
+            <h3>Parallelizing the circumcentered reflection method</h3>
+            <p><strong>P. Barros</strong>, R. Behling, V. Guigues, L.-R. Santos.</p>
+            <span class="pub-tag">Submitted · Best Poster Award, CariOPT 2025 · <a href="https://arxiv.org/abs/2505.17258">arXiv:2505.17258</a></span>
           </div>
           <div class="arrow">→</div>
         </article>
@@ -1288,19 +1323,21 @@
         <article class="pub-card">
           <div class="pub-icon">04</div>
           <div>
-            <h3>Parallelizing the circumcentered reflection method</h3>
-            <p><strong>P. Barros</strong>, R. Behling, V. Guigues, L.-R. Santos.</p>
-            <span class="pub-tag">Under review · COAP · Best Poster Award, CariOPT 2025 · arXiv:2505.17258</span>
+            <h3>Deep centralization for the circumcentered reflection method</h3>
+            <p><strong>P. Barros</strong>.</p>
+            <span class="pub-tag">Submitted · <a href="https://arxiv.org/abs/2512.05324">arXiv:2512.05324</a></span>
           </div>
           <div class="arrow">→</div>
         </article>
 
+        <div class="pub-group-title">In Preparation</div>
+
         <article class="pub-card">
           <div class="pub-icon">05</div>
           <div>
-            <h3>Deep centralization for the circumcentered reflection method</h3>
-            <p><strong>P. Barros</strong>.</p>
-            <span class="pub-tag">Under review · Mathematical Programming · arXiv:2512.05324</span>
+            <h3>FlexGrad:<br>A Root-Free Approach to Adaptive Step Sizes</h3>
+            <p><strong>P. Barros</strong>, A. Defazio, V. Guigues.</p>
+            <span class="pub-tag">In preparation</span>
           </div>
           <div class="arrow">→</div>
         </article>
@@ -1310,7 +1347,7 @@
           <div>
             <h3>Complexity of a framework for solving strongly convex dynamic programming equations</h3>
             <p>V. Guigues, R. Monteiro, <strong>P. Barros</strong>, J. Liang.</p>
-            <span class="pub-tag">In preparation · SIAM Journal on Optimization</span>
+            <span class="pub-tag">In preparation</span>
           </div>
           <div class="arrow">→</div>
         </article>
@@ -1320,7 +1357,7 @@
           <div>
             <h3>Complexity of bidirectional SDDP under strong convexity</h3>
             <p><strong>P. Barros</strong>, V. Guigues, R. Monteiro, J. Liang.</p>
-            <span class="pub-tag">In preparation · SIAM Journal on Optimization</span>
+            <span class="pub-tag">In preparation</span>
           </div>
           <div class="arrow">→</div>
         </article>
@@ -1330,7 +1367,7 @@
           <div>
             <h3>Regularized SDDP via trust-region stabilization for multistage stochastic programs</h3>
             <p>V. Guigues, V. Leclère, <strong>P. Barros</strong>, A. Shapiro.</p>
-            <span class="pub-tag">In preparation · SIAM Journal on Optimization</span>
+            <span class="pub-tag">In preparation</span>
           </div>
           <div class="arrow">→</div>
         </article>
@@ -1346,7 +1383,9 @@
 
       <div class="award-list">
         <article class="award-item">
-          <div class="award-icon">IMO</div>
+          <div class="award-icon logo-white">
+            <img src="logo_imo.png" alt="IMO logo">
+          </div>
           <div>
             <h3>International Mathematical Olympiad</h3>
             <p>
@@ -1358,7 +1397,9 @@
         </article>
 
         <article class="award-item">
-          <div class="award-icon">IMC</div>
+          <div class="award-icon logo-white">
+            <img src="logo_imc.png" alt="IMC logo">
+          </div>
           <div>
             <h3>International Mathematics Competition for University Students</h3>
             <p>
@@ -1369,7 +1410,9 @@
         </article>
 
         <article class="award-item">
-          <div class="award-icon">CIIM</div>
+          <div class="award-icon logo-white">
+            <img src="logo_ciim.png" alt="CIIM logo">
+          </div>
           <div>
             <h3>Ibero-American Interuniversity Mathematics Competition</h3>
             <p>
@@ -1380,7 +1423,9 @@
         </article>
 
         <article class="award-item">
-          <div class="award-icon">OBM</div>
+          <div class="award-icon logo-white">
+            <img src="logo_obm.png" alt="OBM logo">
+          </div>
           <div>
             <h3>Brazilian Mathematics Olympiad — University Level</h3>
             <p>
@@ -1391,7 +1436,9 @@
         </article>
 
         <article class="award-item">
-          <div class="award-icon">OPT</div>
+          <div class="award-icon logo-white">
+            <img src="logo_cariopt.png" alt="CariOPT logo">
+          </div>
           <div>
             <h3>CariOPT 2025</h3>
             <p>
@@ -1413,25 +1460,33 @@
 
       <div class="link-grid">
         <a class="card link-card" href="mailto:pablock@mit.edu">
-          <div class="icon">@</div>
+          <div class="icon logo-white">
+            <img src="logo_email.png" alt="Email icon">
+          </div>
           <h3>Email</h3>
           <p>Contact me directly at pablock@mit.edu.</p>
         </a>
 
         <a class="card link-card" href="https://linkedin.com/in/pabl0ck">
-          <div class="icon">in</div>
+          <div class="icon logo-white">
+            <img src="logo_linkedin.png" alt="LinkedIn logo">
+          </div>
           <h3>LinkedIn</h3>
           <p>Professional profile and career updates.</p>
         </a>
 
         <a class="card link-card" href="https://scholar.google.com/citations?user=sazHxyUAAAAJ&hl=en&oi=sra">
-          <div class="icon">★</div>
+          <div class="icon logo-white">
+            <img src="logo_gscholar.png" alt="Google Scholar logo">
+          </div>
           <h3>Google Scholar</h3>
           <p>Research profile, citations, and publications.</p>
         </a>
 
         <a class="card link-card" href="https://github.com/pabl0ck">
-          <div class="icon">⌘</div>
+          <div class="icon logo-white">
+            <img src="logo_github.png" alt="GitHub logo">
+          </div>
           <h3>GitHub</h3>
           <p>Code, experiments, projects, and technical work.</p>
         </a>
