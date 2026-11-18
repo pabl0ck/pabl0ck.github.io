@@ -1,4 +1,7 @@
 import {demos} from './diagrams.mjs';
+import {mountPlaygrounds} from './playgrounds.mjs';
+
+mountPlaygrounds();
 
 for (const figure of document.querySelectorAll('[data-demo]')) {
   const demo = demos[figure.dataset.demo];

@@ -2,6 +2,7 @@ import {readFile, writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {resolve, dirname, relative} from 'node:path';
 import {demos} from '../assets/js/diagrams.mjs';
+import {experimentIds, experimentMarkup} from '../assets/js/playground-view.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const read = path => readFile(resolve(root, path), 'utf8');
@@ -11,7 +12,7 @@ const ids = new Set();
 for (const p of papers) {
   if (!/^[a-z][a-z0-9-]*$/.test(p.id) || ids.has(p.id)) throw new Error(`Invalid or duplicate paper id: ${p.id}`);
   ids.add(p.id);
-  if (!demos[p.diagram]) throw new Error(`Missing diagram for ${p.id}`);
+  if (!demos[p.diagram] && !experimentIds.has(p.diagram)) throw new Error(`Missing diagram for ${p.id}`);
   for (const l of p.links) if (!l.url.startsWith('https://')) throw new Error(`Expected HTTPS source for ${p.id}`);
 }
 const authors = p => p.authors.map(a => a === 'P. Barros' ? `<strong>${escape(a)}</strong>` : escape(a)).join(', ') + '.';
@@ -38,25 +39,31 @@ function controls(id) {
 }
 function explainers() {
   return papers.map(p => {
-    const initial = demos[p.diagram].render(demos[p.diagram].value);
-    return `<article class="paper-explainer" id="${p.id}" data-category="${p.category}" aria-labelledby="heading-${p.id}">
-  <div class="paper-copy">
+    const expanded = experimentIds.has(p.diagram);
+    const initial = expanded ? null : demos[p.diagram].render(demos[p.diagram].value);
+    const overview = `
     <div class="paper-topic">${escape(p.topic)}</div>
     <h2 id="heading-${p.id}">${escape(p.shortTitle)}</h2>
     <p class="paper-full-title">${escape(p.title)}</p>
     <p class="paper-authors">${authors(p)}</p>
-    <div class="paper-status">${escape(p.group === 'In Preparation' ? p.status : p.group === 'Published' ? p.status : 'Preprint · Under review')}</div>
+    <div class="paper-status">${escape(p.group === 'In Preparation' ? p.status : p.group === 'Published' ? p.status : 'Preprint · Under review')}</div>`;
+    const detail = `
     <p class="paper-question">${escape(p.question)}</p>
     <p>${escape(p.idea)}</p>
     <div class="paper-result"><h3>${p.group === 'In Preparation' ? 'Research direction' : 'Main result'}</h3><p>${escape(p.result)}</p></div>
     <div class="paper-application"><div class="application-kicker">Where it matters</div><h3>${escape(p.applicationLabel)}</h3><p>${escape(p.application)}</p></div>
-    ${p.links.length ? `<div class="paper-source-links">${links(p)}</div>` : ''}
-  </div>
-  <figure class="paper-visual" data-demo="${p.diagram}">
+    ${p.links.length ? `<div class="paper-source-links">${links(p)}</div>` : ''}`;
+    const visual = expanded ? experimentMarkup(p.diagram) : `
     <div class="visual-label">${p.diagram === 'completion' ? 'Explore the application' : 'Explore the idea'}</div>
     <div class="demo-canvas" data-canvas>${initial.svg}</div>
     <div class="demo-controls" data-controls hidden>${controls(p.diagram)}</div>
-    <p class="demo-readout" data-readout aria-live="polite" aria-atomic="true">${escape(initial.readout)}</p>
+    <p class="demo-readout" data-readout aria-live="polite" aria-atomic="true">${escape(initial.readout)}</p>`;
+    return `<article class="paper-explainer${expanded ? ' has-playground' : ''}" id="${p.id}" data-category="${p.category}" aria-labelledby="heading-${p.id}">
+  <div class="paper-copy">
+    ${expanded ? `<div class="paper-overview">${overview}</div><div class="paper-detail">${detail}</div>` : overview + detail}
+  </div>
+  <figure class="paper-visual${expanded ? ' experiment-visual' : ''}" ${expanded ? '' : `data-demo="${p.diagram}"`}>
+    ${visual}
     <div class="paper-formula" aria-label="Mathematical idea">${escape(p.formula)}</div>
     <figcaption>${escape(p.caption)}</figcaption>
     <p class="visual-source-note">${escape(p.sourceNote)}</p>

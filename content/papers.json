@@ -14,10 +14,10 @@
     "result": "We establish convergence to the metric projection and explicit rates for feasibility and distance to that projection under Hölder error bounds. The geometry of the intersection determines the rates.",
     "application": "Constrained reconstruction: adjust a noisy estimate as little as possible while enforcing convex consistency constraints. The paper tests best approximation over intersections of ellipsoids and polyhedra.",
     "applicationLabel": "Constrained reconstruction",
-    "formula": "xₖ₊₁ = αₖ x₀ + (1 − αₖ) T(xₖ)",
+    "formula": "xₖ₊₁ = αₖx₀ + (1 − αₖ) T_A3PM(xₖ),  αₖ = 1/(k + 2)",
     "diagram": "halpern",
-    "caption": "A two-disk example with T equal to alternating projections. The gold point is the anchor; the path approaches its closest point in the intersection.",
-    "sourceNote": "Published paper; illustration uses a simple two-dimensional instance."
+    "caption": "Draw disks or boxes, place a shared starting point, and compare Halpern–A3PM with Dykstra. The white ring is the closest feasible point, computed directly from the two-dimensional geometry. The chart measures distance to that point.",
+    "sourceNote": "A3PM uses ε-relaxed projections in both phases. These admissible approximations are constructed from exact 2D projections. The demonstration reports iteration and set-projection counts."
   },
   {
     "id": "pcrm",
@@ -36,8 +36,8 @@
     "applicationLabel": "Large linear systems",
     "formula": "Rᵤ(x) = 2Pᵤ(x) − x",
     "diagram": "pcrm",
-    "caption": "Two intersecting lines illustrate the geometry: x and its two reflections lie on a circle centered at the intersection. Higher-dimensional problems generally require repeated steps.",
-    "sourceNote": "Read the preprint for the full affine-subspace framework."
+    "caption": "Two lines in ℝ³ intersect at the origin. An out-of-plane starting point produces a sequence of circumcenter updates. Rotate the view and watch the reflected triangle and its circumcenter move as the distance to the intersection decreases.",
+    "sourceNote": "Reflections are computed independently. The graphic displays the actual 3D iteration and a MAP reference trajectory."
   },
   {
     "id": "polyhedral",
@@ -54,10 +54,10 @@
     "result": "The methods converge globally without a regularity assumption. Error bounds give linear rates, and additional geometric conditions yield superlinear convergence for 3PM.",
     "application": "Convex constraint satisfaction in reconstruction and estimation. Different measurements or physical restrictions define separate convex sets; supporting half-spaces provide a tractable outer approximation of their common feasible region.",
     "applicationLabel": "Reconstruction with many constraints",
-    "formula": "Hᵢ = {y : ⟨x − Pᵢx, y − Pᵢx⟩ ≤ 0}",
+    "formula": "xₖ₊₁ = P̂_Ωₖ(xₖ, ε),  Ωₖ = ⋂ᵢ Hᵢᵏ",
     "diagram": "polyhedral",
-    "caption": "An exact 3PM step for three disks. Dashed lines support the disks; the shaded polygon contains their intersection. The next iterate is the projection onto that polygon.",
-    "sourceNote": "The illustration uses exact projections; A3PM additionally supports inexact operations."
+    "caption": "A narrow curved intersection makes successive steps visible. Draw your own disks or boxes; compare A3PM with cyclic MAP and uniform-weight Cimmino. Toggle the separating half-spaces to inspect the local outer approximation.",
+    "sourceNote": "The accuracy parameter satisfies 0 ≤ ε < 1; ε = 0 recovers exact 3PM. Feasibility is measured by the maximum distance to an individual constraint set."
   },
   {
     "id": "deep-centralization",
@@ -94,10 +94,10 @@
     "result": "For convex Lipschitz objectives, the global and coordinate-wise variants attain the optimal asymptotic rate for nonsmooth convex optimization. Experiments examine convex and nonconvex problems.",
     "application": "First-order optimization for machine learning. The method adapts to the gradient information available during training, making directional persistence a useful signal for choosing step sizes.",
     "applicationLabel": "Adaptive model training",
-    "formula": "Directional signal: Σₜ gₜ     Gradient energy: Σₜ gₜ²",
+    "formula": "sₖ₊₁ = sₖ + gₖ;  xₖ₊₁ = x₀ − D‖sₖ₊₁‖sₖ₊₁ / (Σₜ≤ₖ ‖gₜ‖² + 10⁻¹²)",
     "diagram": "flexgrad",
-    "caption": "Synthetic one-dimensional gradients with equal magnitudes. Switching the sign pattern changes the accumulated direction while leaving the sum of squared gradients unchanged.",
-    "sourceNote": "This visualization explains the signal; it does not plot training results or optimizer step sizes."
+    "caption": "Choose among three convex objectives, move the starting point, and tune a shared step scale. Both trajectories are computed from their own gradients. Switch between current and averaged objective gaps to inspect progress.",
+    "sourceNote": "Global, non-EMA FlexGrad (Algorithm 1, λₖ = 1), compared with AdaGrad dual averaging. The average view matches the type of output used in the convex convergence analysis."
   },
   {
     "id": "ddp",
