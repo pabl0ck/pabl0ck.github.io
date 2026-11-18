@@ -1,0 +1,47 @@
+{{> components/head}}
+<body class="explained-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="glow purple" aria-hidden="true"></div>
+  <div class="glow cyan" aria-hidden="true"></div>
+{{> components/nav}}
+  <main class="page" id="main">
+    <header class="explained-hero">
+      <div class="explained-hero-copy">
+        <a class="back-link" href="index.html#publications">Pablo Barros / Research</a>
+        <div class="section-label">Research, explained</div>
+        <h1>Structure.<br><span>Algorithms.</span><br>Better decisions.</h1>
+        <p class="explained-intro">The ideas behind my papers, made visual.</p>
+        <p>How do we satisfy thousands of constraints, choose a better learning rate, or plan for an uncertain future? Explore the mathematics, the algorithms, and the problems they can help solve.</p>
+        <div class="hero-topics"><span>Optimization</span><span>Machine learning</span><span>Decisions under uncertainty</span></div>
+      </div>
+{{> components/research-map}}
+    </header>
+    <div class="reading-guide">
+      <p><strong>Start with a question.</strong> Each paper connects an algorithmic idea to an application. Move the sliders and switch the examples to explore the intuition.</p>
+      <p class="guide-note">The visualizations use toy examples. Applications describe where the mathematical setting is useful; the linked papers give the precise assumptions and experiments.</p>
+    </div>
+    <nav class="paper-index" aria-label="Jump to a paper">
+{{paper_index}}
+    </nav>
+    <div class="research-toolbar" data-filters hidden>
+      <div class="filter-buttons" role="group" aria-label="Filter papers by research area">
+        <button type="button" data-filter="all" aria-pressed="true">All papers <span>9</span></button>
+        <button type="button" data-filter="geometry" aria-pressed="false">Geometry &amp; projections</button>
+        <button type="button" data-filter="learning" aria-pressed="false">Learning &amp; equilibria</button>
+        <button type="button" data-filter="decisions" aria-pressed="false">Decisions over time</button>
+      </div>
+      <p class="filter-count" aria-live="polite">Showing all 9 papers</p>
+    </div>
+    <div class="paper-explainers" id="papers">
+{{explainers}}
+    </div>
+    <aside class="research-outro">
+      <div><div class="section-label">A common thread</div><h2>Use the structure.<br>Make the computation count.</h2></div>
+      <div><p>Across projection geometry, adaptive optimization, and dynamic programming, my work asks how mathematical structure can lead to algorithms with useful guarantees and scalable computation.</p><a class="button" href="mailto:pablock@mit.edu">Discuss a research idea</a></div>
+    </aside>
+{{> components/footer}}
+  </main>
+  <script src="assets/js/site.js" defer></script>
+  <script type="module" src="assets/js/research.mjs"></script>
+</body>
+</html>
