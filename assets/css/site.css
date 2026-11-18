@@ -1134,7 +1134,6 @@ section[id] { scroll-margin-top: 90px; }
 .stat { padding: 15px 7px; }
 .stat strong { font-size: .9rem; letter-spacing: .025em; }
 .stat span { font-size: .75rem; color: #a7b6cf; letter-spacing: 0; line-height: 1.7; }
-.stat-quant { border-color: #a78bfa66; background: linear-gradient(135deg, #8b5cf622, #22d3ee0c); }
 .publications-explained { margin: -10px 0 15px; }
 .research-explained-link { margin-top: 24px; }
 .pub-card { grid-template-columns: 60px minmax(0, 1fr) auto; }

@@ -84,7 +84,7 @@
     "title": "FlexGrad: A Root-Free Approach to Adaptive Step Sizes",
     "authors": ["P. Barros", "A. Defazio", "V. Guigues"],
     "group": "Under Review",
-    "status": "arXiv preprint",
+    "status": "",
     "links": [{"label": "arXiv:2610.09203", "url": "https://arxiv.org/abs/2610.09203"}],
     "category": "learning",
     "topic": "Adaptive optimization",

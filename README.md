@@ -18,6 +18,7 @@ The site is split into small HTML sections, shared CSS, JavaScript, and one publ
 | Shared navigation, metadata, footer | `src/components/` |
 | Homepage / explanation-page structure | `src/pages/` |
 | Existing site appearance | `assets/css/site.css` |
+| Portrait, logos, and favicon | `assets/images/` |
 | Explanation-page appearance | `assets/css/research.css` |
 | Mathematical SVG illustrations and toy instances | `assets/js/diagrams.mjs` |
 | Visualization controls and topic filters | `assets/js/research.mjs` |
